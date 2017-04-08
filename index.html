@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    @font-face { 
+    font-family: Digital-7Mono;
+    src: url('font/Digital-7Mono.TTF');
+    } 
+    div{
+         text-align: center;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color:#00b2ff;
+         font-family: Digital-7Mono;
+         font-size: 120px;
+    }
+    #div1{
+        margin-top:50px;
+        margin-bottom:30px;
+    }
+    span{
+        display: block;
+        width:500px;
+        height:216px;
+        padding-top:45px;
+
+        background:url('http://i1.piimg.com/567571/b18172af15c907f9.png') no-repeat
+    }
+    button{
+       margin-right:20px;
+        width:130px;
+        height:42px;
+        cursor: pointer;
+       
+    }
+    #btn,#stop{ 
+        line-height: 20px;
+         font-size: 20px;
+    }
+    </style>
+</head>
+<body>
+ <div id="div1">
+    <span id="Countdown">02:00:00</span>
+</div>
+<div id="div2">
+ <button id="btn">开 始</button>
+ <button id="stop">停 止</button>
+ </div>
+  <script>
+    sethour = document.querySelector('#hour')
+ setmin = document.querySelector('#minute')
+ setsec = document.querySelector('#second')
+
+var button = document.querySelector('#btn')
+var total= 2*3600
+var count = 0
+
+/*button.addEventListener('click',function(){
+  var id = setInterval(function(){
+    if (total <= 1) {
+      clearInterval(id)
+    }
+    total-=1
+    
+    var hours = parseInt(total/3600,10)
+    var minute = parseInt((total-hours*3600)/60)
+    var second = total - hours*3600-minute*60
+    Countdown.innerText = `${hours}:${minute}:${second}`
+    
+  },1000)
+})*/
+
+function stime(){
+  
+  if(count===1){
+   id = setInterval(function(){
+    if (total <= 1) {
+      clearInterval(id)
+    }
+      total-=1
+   
+    
+    var hours = parseInt(total/3600,10)
+    var minute = parseInt((total-hours*3600)/60)
+    var second = total - hours*3600-minute*60
+    if(hours<10){
+        hours = '0'+hours
+    }
+    if(minute<10){
+        minute = '0'+minute
+    }
+    if(second<10){
+        second = '0'+second
+    }
+    Countdown.innerText = `${hours}:${minute}:${second}`
+    
+  },1000)
+  }
+}
+button.addEventListener('click', function(){
+  count+=1
+  stime()
+})
+var stop = document.querySelector('#stop')
+stop.addEventListener('click',function(){
+  clearInterval(id)
+  count=0
+})
+
+  </script>
+</body>
+</html>
