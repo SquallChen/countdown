@@ -140,13 +140,16 @@ settime.onclick = function(){
     }
    countText.style.display="block"
    countText.innerText=`${hours}:${minute}:${second}`
-   console.log(total)
+   sethour.value = '0'
+   setmin.value = '0'
+   setsec.value = '0'
 }
 function stime(){
   if(count===1){
    id = setInterval(function(){
     if (total <= 1) {
       clearInterval(id)
+      count=0
     }
       total-=1
    
